@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# IDEA igonring rules
+/.idea/*
+!/.idea/fileTemplates/
+!/.idea/inspectionProfiles/
+!/.idea/codeStyles/
+/.idea**/*Stashed changes*
