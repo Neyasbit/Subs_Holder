@@ -1,4 +1,6 @@
 pluginManagement {
+    // This options can rename a folder standard "buildSrc"
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -13,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Subs Holder"
-include ':app'
+include(":app")
