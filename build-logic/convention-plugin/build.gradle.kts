@@ -4,6 +4,13 @@ plugins {
 
 group = "com.example.subholder.buildlogic"
 
+// This repositories are required to connect non-official
+repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
@@ -12,6 +19,10 @@ java {
 dependencies {
     compileOnly(libs.build.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
+
+    implementation(libs.detekt.plugin)
+    implementation(libs.ktlint.jlleitschuh.plugin)
+    implementation(libs.spotless.plugin)
 }
 
 gradlePlugin {
@@ -31,6 +42,10 @@ gradlePlugin {
         register("androidComposeLibrary") {
             id = "subholder.android.compose.library"
             implementationClass = "AndroidComposeLibraryConventionPlugin"
+        }
+        register("androidAppQualityPlugin") {
+            id = "subholder.android.codequality"
+            implementationClass = "CodeQualityConventionPlugin"
         }
     }
 }

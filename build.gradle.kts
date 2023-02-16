@@ -3,8 +3,6 @@ buildscript {
         google()
         mavenCentral()
     }
-
-
 }
 
 plugins {

@@ -23,19 +23,25 @@ androidxEspresso = "3.5.1"
 # Kotlin
 kotlin = "1.8.10"
 
+# Static analyze code
+detekt = "1.22.0"
+ktlint = "0.45.2"
+ktlint_jlleitschuh = "11.2.0"
+spotless = "6.4.2"
+
 [libraries]
 # Android
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycle" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
-androidx-material = { group = "com.google.android.material", name = "material", version.ref="androidxMaterial"}
+androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidxMaterial" }
 
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
 androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
-androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref="androidxComposeMaterial"}
+androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "androidxComposeMaterial" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
@@ -59,8 +65,16 @@ androidx-test-runner = { group = "androidx.test", name = "runner", version.ref =
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 #androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
 
+# Plugins
+detekt_plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+ktlint_jlleitschuh_plugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint_jlleitschuh" }
+spotless_plugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotless" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint_jlleitschuh" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }

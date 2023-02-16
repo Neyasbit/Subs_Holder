@@ -2,6 +2,7 @@ plugins {
     // this plugins registered in build.gradle "convention-plugin" module
     id("subholder.android.application")
     id("subholder.android.application.compose")
+    id("subholder.android.codequality")
 }
 
 android {
@@ -28,5 +29,4 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.androidx.compose.material)
-
 }
