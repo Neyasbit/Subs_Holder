@@ -22,6 +22,7 @@ dependencies {
 
     implementation(libs.detekt.plugin)
     implementation(libs.ktlint.jlleitschuh.plugin)
+    implementation(libs.spotless.plugin)
 }
 
 gradlePlugin {
