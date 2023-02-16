@@ -25,6 +25,8 @@ kotlin = "1.8.10"
 
 # Static analyze code
 detekt = "1.22.0"
+ktlint = "0.45.2"
+ktlint_jlleitschuh = "11.2.0"
 
 [libraries]
 # Android
@@ -64,6 +66,7 @@ junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 
 # Plugins
 detekt_plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+ktlint_jlleitschuh_plugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint_jlleitschuh" }
 
 
 [plugins]
@@ -71,3 +74,4 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint_jlleitschuh" }

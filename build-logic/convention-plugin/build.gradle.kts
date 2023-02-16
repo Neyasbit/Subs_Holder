@@ -1,9 +1,15 @@
 plugins {
     `kotlin-dsl`
-    //asd
 }
 
 group = "com.example.subholder.buildlogic"
+
+// This repositories are required to connect non-official
+repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -14,7 +20,8 @@ dependencies {
     compileOnly(libs.build.gradle.plugin)
     compileOnly(libs.kotlin.gradle.plugin)
 
-     implementation(libs.detekt.plugin)
+    implementation(libs.detekt.plugin)
+    implementation(libs.ktlint.jlleitschuh.plugin)
 }
 
 gradlePlugin {
