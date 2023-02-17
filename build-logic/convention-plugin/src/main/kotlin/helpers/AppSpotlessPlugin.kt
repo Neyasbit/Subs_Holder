@@ -7,7 +7,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
-class AppSpotlessPlugin : Plugin<Project> {
+internal class AppSpotlessPlugin : Plugin<Project> {
 
     override fun apply(target: Project) = target.run {
         apply<SpotlessPlugin>()
@@ -15,13 +15,17 @@ class AppSpotlessPlugin : Plugin<Project> {
         configure<SpotlessExtension> {
             kotlin {
                 ktlint()
-
+                // Doesn't work without target
+                target("**/*.kt")
                 trimTrailingWhitespace()
                 indentWithSpaces()
                 endWithNewline()
             }
 
             java {
+                // Doesn't work without target
+                // https://github.com/diffplug/spotless/issues/111
+                target("**/*.java")
                 importOrder()
                 removeUnusedImports()
                 googleJavaFormat()

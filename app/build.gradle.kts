@@ -5,6 +5,13 @@ plugins {
     id("subholder.android.codequality")
 }
 
+/**
+ * The task runs code analyzers before building the project
+ */
+tasks
+    .getByPath("preBuild")
+    .dependsOn("ktlintFormat")
+
 android {
     defaultConfig {
         applicationId = "com.example.subsholder"
@@ -29,4 +36,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.androidx.compose.material)
+    implementation(libs.junit4)
+    implementation(libs.androidx.test.ext)
+    implementation(libs.androidx.test.core)
 }
