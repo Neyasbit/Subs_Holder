@@ -8,7 +8,7 @@ import org.jlleitschuh.gradle.ktlint.KtlintExtension
 import org.jlleitschuh.gradle.ktlint.KtlintPlugin
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
-class AppKtlintPlugin : Plugin<Project> {
+internal class AppKtlintPlugin : Plugin<Project> {
 
     override fun apply(target: Project) = target.run {
         apply<KtlintPlugin>()
@@ -17,7 +17,6 @@ class AppKtlintPlugin : Plugin<Project> {
             debug.set(true)
             verbose.set(true)
             android.set(true)
-            ignoreFailures.set(true)
             enableExperimentalRules.set(true)
             outputToConsole.set(true)
             outputColorName.set("RED")
@@ -26,6 +25,7 @@ class AppKtlintPlugin : Plugin<Project> {
             reporters {
                 reporter(ReporterType.PLAIN)
                 reporter(ReporterType.CHECKSTYLE)
+                reporter(ReporterType.SARIF)
             }
 
             filter {

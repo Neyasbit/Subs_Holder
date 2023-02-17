@@ -5,8 +5,11 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
 
+/**
+ * see build.gradle.kts gradlePlugin block
+ */
 @Suppress("unused")
-class CodeQualityConventionPlugin : Plugin<Project> {
+internal class CodeQualityConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
         apply<AppDetektPlugin>()
         apply<AppKtlintPlugin>()

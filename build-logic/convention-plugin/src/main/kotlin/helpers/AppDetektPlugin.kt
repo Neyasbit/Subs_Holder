@@ -11,24 +11,26 @@ import org.gradle.kotlin.dsl.configure
  * Configure base options for Detekt plugin
  */
 
-class AppDetektPlugin : Plugin<Project> {
+internal class AppDetektPlugin : Plugin<Project> {
     override fun apply(target: Project) = target.run {
         apply<DetektPlugin>()
 
         configure<DetektExtension> {
 
-            config = files("$rootDir/codequality/detekt.yml")
+            /*
+            Do not found(
+            val configFiles = file("$rootDir/codequality/detekt.yml")
+            config.setFrom(configFiles)*/
 
             autoCorrect = true
             parallel = true
 
             buildUponDefaultConfig = true
 
-            source = files("src/")
-
             // By default detekt does not check test source set and gradle specific files,
             // so hey have to be added manually
             source = files(
+                "src",
                 "$rootDir/buildSrc",
                 "$rootDir/build.gradle.kts",
                 "$rootDir/settings.gradle.kts",

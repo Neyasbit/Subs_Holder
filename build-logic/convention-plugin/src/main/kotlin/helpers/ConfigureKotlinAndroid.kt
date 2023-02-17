@@ -1,6 +1,7 @@
 package helpers
 
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.gradle.internal.tasks.factory.dependsOn
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -33,7 +34,14 @@ internal fun Project.configureKotlinAndroid(
                 "-opt-in=kotlinx.coroutines.FlowPreview",
                 "-opt-in=kotlin.Experimental",
             )
+            jvmTarget = JavaVersion.VERSION_11.toString()
         }
+        /**
+         * @see SpotlessAutoPreBuildTask
+         */
+        tasks
+            .register("autoCheckAndApplySpotless")
+            .dependsOn("build")
     }
 }
 
