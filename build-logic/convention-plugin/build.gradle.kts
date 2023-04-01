@@ -23,8 +23,13 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-    compileOnly(libs.build.gradle.plugin)
-    compileOnly(libs.kotlin.gradle.plugin)
+    /*
+    * compileOnly makes it impossible to load class 'com.android.build.api.dsl.ApplicationExtension'
+    * for my custom plugin if i loaded the settings.gradle.kts plugin
+    * You also need to remove the loading of plugins in the project block
+     */
+    implementation(libs.build.gradle.plugin)
+    implementation(libs.kotlin.gradle.plugin)
 
     implementation(libs.detekt.plugin)
     implementation(libs.ktlint.jlleitschuh.plugin)
@@ -52,6 +57,10 @@ gradlePlugin {
         register("androidAppQualityPlugin") {
             id = "subholder.android.codequality"
             implementationClass = "CodeQualityConventionPlugin"
+        }
+        register("androidSettingsProject") {
+            id = "subholder.settings"
+            implementationClass = "SettingsConventionPlugin"
         }
     }
 }

@@ -1,5 +1,6 @@
 pluginManagement {
     // This options can rename a folder standard "buildSrc"
+    // it also required to load custom settings plugins
     includeBuild("build-logic")
     repositories {
         google()
@@ -7,12 +8,10 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
+
+plugins {
+    id("subholder.settings")
 }
+
 rootProject.name = "Subs Holder"
-include(":app")
+
