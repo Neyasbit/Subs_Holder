@@ -2,7 +2,7 @@
 # You can to read more details here https://docs.gradle.org/current/userguide/platforms.html#sec:sharing-catalogs
 
 [versions]
-androidGradlePlugin = "7.4.0"
+androidGradlePlugin = "7.4.2"
 # AndroidX
 androidxActivity = "1.6.1"
 androidxCore = "1.9.0"

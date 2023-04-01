@@ -36,12 +36,20 @@ internal fun Project.configureKotlinAndroid(
             )
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
+
+        /**
+         * The task runs code analyzers before building the project
+         */
+        tasks
+            .getByPath("preBuild")
+            .dependsOn("ktlintFormat")
         /**
          * @see SpotlessAutoPreBuildTask
          */
         tasks
             .register("autoCheckAndApplySpotless")
             .dependsOn("build")
+
     }
 }
 
