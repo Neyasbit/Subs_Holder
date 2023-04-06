@@ -60,7 +60,7 @@ gradlePlugin {
         }
         register("androidSettingsProject") {
             id = "subholder.settings"
-            implementationClass = "SettingsConventionPlugin"
+            implementationClass = "ProjectStructurePlugin"
         }
     }
 }
