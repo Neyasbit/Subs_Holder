@@ -18,16 +18,19 @@ internal class ProjectStructurePlugin : Plugin<Settings> {
         }
 
         rootDir
-            .listFiles(FilterProjectDirectory.isDirectoryNotHidden)
+            .listFiles(FilterProjectDirectory.isDirectoryNotHiddenAndNoBuild)
             ?.flatMap { dir ->
-                val subDirs = dir.listFiles(FilterProjectDirectory.isDirectoryNotHidden)?.toList()
-                    ?: emptyList()
+                val subDirs =
+                    dir
+                        .listFiles(FilterProjectDirectory.isDirectoryNotHiddenAndNoBuild)
+                        ?.toList()
+                        ?: emptyList()
                 listOf(dir).plus(subDirs)
             }
             ?.filter { subDir ->
                 FilterProjectDirectory
-                    .SubProjectFiler(subDir)
-                    .directoryFilter(subDir.parentFile)
+                    .DirectoryWithBuildGradle()
+                    .directoryFilter(subDir)
             }
             ?.mapNotNull { dir ->
                 val projectName = dir.parentFile.name
@@ -48,24 +51,20 @@ private interface FilterProjectDirectory {
     companion object {
         private const val BUILD_GRADLE_FILE_NAME = "/build.gradle.kts"
 
-        val isDirectoryNotHidden: (File) -> Boolean = { file ->
-            !file.isHidden && file.isDirectory
+        val isDirectoryNotHiddenAndNoBuild: (File) -> Boolean = { file ->
+            !file.isHidden && file.isDirectory && NoBuildDirectory().directoryFilter(file)
         }
     }
 
     fun directoryFilter(file: File): Boolean
 
-    private class DirectoryWithBuildGradle : FilterProjectDirectory {
-        override fun directoryFilter(file: File) =
+    class DirectoryWithBuildGradle : FilterProjectDirectory {
+        override fun directoryFilter(file: File): Boolean =
             file.resolve(file.path + BUILD_GRADLE_FILE_NAME).exists()
-
     }
 
-    class SubProjectFiler(private val subFile: File) : FilterProjectDirectory {
-        override fun directoryFilter(file: File): Boolean {
-            val buildDirName = "build"
-            val gradleDir = DirectoryWithBuildGradle().directoryFilter(subFile)
-            return !file.name.startsWith(buildDirName) && gradleDir
-        }
+    private class NoBuildDirectory : FilterProjectDirectory {
+        override fun directoryFilter(file: File): Boolean =
+            !file.name.startsWith("build")
     }
 }
