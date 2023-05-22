@@ -1,4 +1,4 @@
-package com.example.subsholder
+package com.subsholder
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

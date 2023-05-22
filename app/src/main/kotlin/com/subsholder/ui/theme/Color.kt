@@ -1,4 +1,4 @@
-package com.example.subsholder.ui.theme
+package com.subsholder.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -18,10 +18,11 @@ android {
         }
     }
 
-    namespace = "com.example.subsholder"
+    namespace = "com.subsholder"
 }
 
 dependencies {
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.runtime)

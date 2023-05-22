@@ -1,4 +1,4 @@
-package com.example.subsholder
+package com.subsholder
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

@@ -11,6 +11,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
  * Configure base Kotlin with Android options
  */
 
+@Suppress("UnstableApiUsage")
 internal fun Project.configureKotlinAndroid(
     commonExtension: CommonExtension<*, *, *, *>,
 ) {
@@ -37,12 +38,19 @@ internal fun Project.configureKotlinAndroid(
             jvmTarget = JavaVersion.VERSION_11.toString()
         }
 
+        sourceSets {
+            getByName("main") {
+                java.srcDirs("src/kotlin")
+                kotlin.srcDirs("src/kotlin")
+            }
+        }
         /**
          * The task runs code analyzers before building the project
          */
-        tasks
+         tasks
             .getByPath("preBuild")
             .dependsOn("ktlintFormat")
+
         /**
          * @see SpotlessAutoPreBuildTask
          */
