@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.detekt.plugin)
     implementation(libs.ktlint.jlleitschuh.plugin)
     implementation(libs.spotless.plugin)
+    implementation(libs.gradle.versions.plugin)
 }
 
 gradlePlugin {
@@ -61,6 +62,10 @@ gradlePlugin {
         register("androidSettingsProject") {
             id = "subholder.settings"
             implementationClass = "ProjectStructurePlugin"
+        }
+        register("gradleVersionsPlugin") {
+            id = "subholder.gradleVersionPlugin"
+            implementationClass = "helpers.GradleVersionsPlugin"
         }
     }
 }
