@@ -43,16 +43,16 @@ internal fun Project.configureKotlinAndroid(
                 kotlin.srcDirs("src/kotlin")
             }
         }
-        /**
-         * The task runs code analyzers before building the project
-         */
 
         tasks.named("preBuild") {
+            /**
+             * just to check in which module the tasks are executed
+             */
+            println("inside tasks -> " + project.name)
             dependsOn("ktlintFormat")
             dependsOn("spotlessCheck")
             dependsOn("spotlessApply")
         }
-
     }
 }
 

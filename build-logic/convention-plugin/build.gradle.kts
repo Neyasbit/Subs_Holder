@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.example.subholder.buildlogic"
+group = "com.subholder.buildlogic"
 
 // This repositories are required to connect non-official
 repositories {
