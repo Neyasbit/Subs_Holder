@@ -24,7 +24,7 @@ androidxEspresso = "3.5.1"
 # Kotlin
 kotlin = "1.8.10"
 # Koin
-koinAndroid = "3.4.0"
+koin = "3.4.0"
 # Static analyze code
 detekt = "1.22.0"
 ktlint = "0.45.2"
@@ -57,7 +57,8 @@ kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 # Kotlin
 kotlin_stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 # Koin
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 # Test
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxEspresso" }
