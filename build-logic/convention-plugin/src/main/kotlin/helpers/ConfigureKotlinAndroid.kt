@@ -1,7 +1,6 @@
 package helpers
 
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.gradle.internal.tasks.factory.dependsOn
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -44,20 +43,16 @@ internal fun Project.configureKotlinAndroid(
                 kotlin.srcDirs("src/kotlin")
             }
         }
-        /**
-         * The task runs code analyzers before building the project
-         */
-         tasks
-            .getByPath("preBuild")
-            .dependsOn("ktlintFormat")
 
-        /**
-         * @see SpotlessAutoPreBuildTask
-         */
-        tasks
-            .register("autoCheckAndApplySpotless")
-            .dependsOn("build")
-
+        tasks.named("preBuild") {
+            /**
+             * just to check in which module the tasks are executed
+             */
+            println("inside tasks -> " + project.name)
+            dependsOn("ktlintFormat")
+            dependsOn("spotlessCheck")
+            dependsOn("spotlessApply")
+        }
     }
 }
 
